@@ -2,330 +2,149 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>Портфоліо — Іван Бойко</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Іван Бойко — Портфоліо</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    :root {
-      --bg-light: linear-gradient(135deg, #e3f2fd, #fceabb);
-      --bg-dark: #121212;
-      --text-light: #1e1e1e;
-      --text-dark: #eee;
-      --primary: #8baa24;
-      --accent: #7b1fa2;
-      --neon-glow: 0 0 12px rgba(139, 170, 36, 0.8);
-    }
-
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      background: var(--bg-light);
-      color: var(--text-light);
-      scroll-behavior: smooth;
-      transition: all 0.4s ease;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fceabb);
+      color: #222;
     }
 
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    .lang-switcher {
+    canvas {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      display: block;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(6px);
-      padding: 10px;
-      z-index: 1000;
-      border-bottom: 1px solid #ccc;
-    }
-
-    body.dark .lang-switcher {
-      background: rgba(0,0,0,0.8);
-      border-bottom: 1px solid #333;
-    }
-
-    button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: var(--neon-glow);
-    }
-
-    button:hover {
-      background: var(--accent);
-      transform: scale(1.05);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 120px auto 40px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px 24px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 1s ease;
-    }
-
-    body.dark .container {
-      background: rgba(30, 30, 30, 0.95);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      padding: 20px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin-bottom: 10px;
-      color: var(--accent);
-      animation: typing 2.5s steps(20), blink 0.7s step-end infinite alternate;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Georgia', serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
     }
 
-    @keyframes blink {
-      50% { border-color: transparent; }
+    .card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
-    h2 {
-      font-size: 24px;
-      margin-top: 30px;
-      border-bottom: 2px dashed var(--primary);
-      padding-bottom: 6px;
-    }
-
-    p, li {
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li::before {
-      content: "\2728 ";
-      margin-right: 8px;
-    }
-
-    .highlight {
-      background: var(--primary);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 8px;
-    }
-
-    .kitty {
-      font-size: 36px;
-      text-align: center;
-      animation: kittyBlink 2s infinite;
-      margin-top: 20px;
-    }
-
-    @keyframes kittyBlink {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    a {
-      color: #1976d2;
-      font-weight: bold;
+    .card a {
+      color: #1e88e5;
       text-decoration: none;
+      font-weight: bold;
     }
 
-    a:hover {
-      color: var(--primary);
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #999;
-      font-style: italic;
-    }
-
-    .floating-btns {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.1);
-      padding: 12px;
+    .social-icons {
+      margin-top: 15px;
       display: flex;
       justify-content: center;
-      gap: 16px;
-      z-index: 99;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
+      gap: 20px;
+      font-size: 1.8rem;
     }
 
-    .floating-btns a {
-      background: var(--primary);
-      color: white;
-      padding: 12px;
-      border-radius: 50%;
-      font-size: 22px;
-      transition: 0.3s;
+    .social-icons a {
+      color: #333;
+      transition: color 0.3s;
     }
 
-    .floating-btns a:hover {
-      background: var(--accent);
-      transform: scale(1.15);
-    }
-
-    @media (max-width: 600px) {
-      html, body {
-        font-size: 17px;
-      }
-      .container {
-        margin: 140px 10px 30px;
-        padding: 20px;
-      }
-      h1 {
-        font-size: 28px;
-      }
-      h2 {
-        font-size: 20px;
-      }
+    .social-icons a:hover {
+      color: #8baa24;
     }
   </style>
 </head>
 <body>
-  <div class="lang-switcher">
-    <button onclick="switchLang('uk')">🇺🇦 Українська</button>
-    <button onclick="switchLang('en')">🇬🇧 English</button>
-    <button onclick="toggleTheme()">🌓 Тема</button>
-  </div>
+  <canvas id="bg"></canvas>
 
-  <div class="kitty">😺</div>
-
-  <div class="container" id="content-uk">
+  <div class="content">
     <h1>Іван Бойко</h1>
-    <p><span class="highlight">Професія:</span> Студент комп'ютерних наук</p>
-    <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
-    <p><span class="highlight">Телефон:</span> +380 68 791 0545</p>
+    <p>Я — душа компанії, студент-комп'ютерник і просто кайфовий хлопець 😎. Люблю кодити, спілкуватись і створювати щось круте.</p>
 
-    <h2>Про мене</h2>
-    <p>Я — студент КНУБА, люблю технології, код, собак і кайфовий дизайн. Навчаюсь, розвиваюсь, качаюсь 💪.</p>
-
-    <h2>Освіта</h2>
-    <ul>
-      <li>КНУБА (2024–2028)</li>
-      <li>Школа (2013–2024)</li>
-    </ul>
-
-    <h2>Навички</h2>
-    <ul>
-      <li><strong>Мови:</strong> C++, HTML, CSS</li>
-      <li><strong>Інструменти:</strong> Git, VS Code, Figma</li>
-      <li><strong>Англійська:</strong> Intermediate+</li>
-    </ul>
-
-    <h2>Досвід</h2>
-    <ul>
-      <li>Навчальні проєкти (в команді)</li>
-      <li>Курси (Coursera, Udemy)</li>
-      <li>Пет-проєкти з дизайну</li>
-    </ul>
-
-    <h2>Інтереси</h2>
-    <ul>
-      <li>Технології та UI/UX</li>
-      <li>Песики 🐶</li>
-      <li>Спорт, рукопашний бій 🥋 <a href="https://www.facebook.com/HandToHandCombatFederation/" target="_blank">Федерація</a></li>
-    </ul>
-
-    <div class="footer">
-      <p>&copy; 2025 Іван Бойко</p>
+    <div class="card">
+      <h2>Контакти</h2>
+      <p>Email: <a href="mailto:bivan2544@gmail.com">bivan2544@gmail.com</a></p>
+      <p>Телефон: +380 68 791 0545</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/boy4ik23/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/ivannboiko" target="_blank"><i class="fab fa-telegram"></i></a>
+      </div>
     </div>
   </div>
 
-  <div class="container" id="content-en" style="display:none;">
-    <h1>Ivan Boiko</h1>
-    <p><span class="highlight">Profession:</span> Computer Science student</p>
-    <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
-    <p><span class="highlight">Phone:</span> +380 68 791 0545</p>
-
-    <h2>About Me</h2>
-    <p>I’m a CS student from KNUCA. I enjoy tech, coding, dogs, and slick design. Always learning and evolving 💪.</p>
-
-    <h2>Education</h2>
-    <ul>
-      <li>KNUCA (2024–2028)</li>
-      <li>School (2013–2024)</li>
-    </ul>
-
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> C++, HTML, CSS</li>
-      <li><strong>Tools:</strong> Git, VS Code, Figma</li>
-      <li><strong>English:</strong> Intermediate+</li>
-    </ul>
-
-    <h2>Experience</h2>
-    <ul>
-      <li>Team projects</li>
-      <li>Online courses (Coursera, Udemy)</li>
-      <li>Personal design/code projects</li>
-    </ul>
-
-    <div class="footer">
-      <p>&copy; 2025 Ivan Boiko</p>
-    </div>
-  </div>
-
-  <div class="floating-btns">
-    <a href="https://www.instagram.com/boy4ik23/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://t.me/ivannboiko" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-  </div>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
 
   <script>
-    function switchLang(lang) {
-      const uk = document.getElementById('content-uk');
-      const en = document.getElementById('content-en');
-      if (lang === 'uk') {
-        uk.style.display = 'block';
-        en.style.display = 'none';
-      } else {
-        uk.style.display = 'none';
-        en.style.display = 'block';
-      }
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg"), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshStandardMaterial({ color: "#8baa24" });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 1000;
+    const positions = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 100;
+    }
+    starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    camera.position.z = 4;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
     }
 
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
   </script>
 </body>
 </html>
