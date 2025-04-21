@@ -13,12 +13,17 @@
       --text-light: #222;
       --text-dark: #eee;
       --primary: #8baa24;
+      --accent: #ff4081;
     }
 
-    html, body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
+    }
+
+    body {
       font-size: 18px;
       background: var(--bg-light);
       color: var(--text-light);
@@ -34,10 +39,11 @@
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 40px 25px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: background 0.4s ease;
     }
 
     body.dark .container {
@@ -48,8 +54,13 @@
       text-align: center;
       font-family: 'Playfair Display', serif;
       font-size: 36px;
-      margin-bottom: 10px;
       color: #2c3e50;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    body.dark h1 {
+      color: #fff;
     }
 
     h2 {
@@ -57,11 +68,13 @@
       margin-top: 30px;
       border-bottom: 2px dashed var(--primary);
       padding-bottom: 6px;
+      font-weight: bold;
+      color: var(--primary);
     }
 
     p, li {
       line-height: 1.6;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     ul {
@@ -77,7 +90,7 @@
     .highlight {
       background: var(--primary);
       color: #fff;
-      padding: 3px 8px;
+      padding: 5px 10px;
       border-radius: 5px;
     }
 
@@ -85,7 +98,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 15px;
       margin: 20px 0;
     }
 
@@ -93,16 +106,21 @@
       background: var(--primary);
       border: none;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 25px;
       border-radius: 10px;
       font-weight: bold;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s ease, transform 0.2s;
     }
 
     button:hover {
-      background: #7b1fa2;
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    button:active {
+      transform: translateY(1px);
     }
 
     .kitty {
@@ -118,13 +136,15 @@
     }
 
     .contact-info p {
-      margin: 6px 0;
+      margin: 10px 0;
+      font-size: 18px;
     }
 
     a {
       color: #1976d2;
       font-weight: bold;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     a:hover {
@@ -140,17 +160,13 @@
 
     .floating-btns {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.1);
-      padding: 10px;
+      top: 20px;
+      right: 20px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       gap: 20px;
       z-index: 99;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
+      transition: transform 0.3s ease;
     }
 
     .floating-btns a {
@@ -159,11 +175,12 @@
       padding: 15px;
       border-radius: 50%;
       font-size: 30px;
-      transition: 0.3s;
+      transition: background 0.3s ease, transform 0.2s;
     }
 
     .floating-btns a:hover {
-      background: #7b1fa2;
+      background: var(--accent);
+      transform: translateY(-3px);
     }
 
     .social-icons {
@@ -172,9 +189,14 @@
     }
 
     .social-icons a {
-      margin: 0 10px;
+      margin: 10px 0;
       font-size: 24px;
       color: #1976d2;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--primary);
     }
 
     @media (max-width: 768px) {
@@ -183,11 +205,11 @@
       }
 
       .container {
-        padding: 20px;
+        padding: 30px 15px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 30px;
       }
 
       h2 {
@@ -200,7 +222,7 @@
       }
 
       .kitty {
-        font-size: 30px;
+        font-size: 35px;
       }
 
       .floating-btns a {
@@ -232,11 +254,12 @@
       }
 
       .kitty {
-        font-size: 28px;
+        font-size: 30px;
       }
 
       .floating-btns {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         gap: 10px;
       }
 
