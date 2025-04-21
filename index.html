@@ -2,196 +2,360 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Портфоліо — Іван Бойко</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфоліо - Іван Бойко</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <style>
+    :root {
+      --bg-light: linear-gradient(135deg, #e3f2fd, #fceabb);
+      --bg-dark: #121212;
+      --text-light: #222;
+      --text-dark: #eee;
+      --primary: #8baa24;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e3f2fd, #fceabb);
-      color: #222;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.4s ease;
+      scroll-behavior: smooth;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: block;
-      z-index: 0;
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      text-align: center;
-      animation: fadeIn 1.5s ease-out;
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark .container {
+      background: rgba(30, 30, 30, 0.95);
     }
 
     h1 {
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-      font-family: 'Georgia', serif;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-      animation: slideUp 1s ease-out;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #2c3e50;
     }
 
-    p {
-      font-size: 1.3rem;
-      max-width: 650px;
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeInText 2s ease-out forwards;
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      border-bottom: 2px dashed var(--primary);
+      padding-bottom: 6px;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(15px);
-      border-radius: 16px;
-      padding: 25px 35px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    p, li {
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    ul {
+      padding-left: 0;
+      list-style: none;
     }
 
-    .card a {
-      color: #1e88e5;
-      text-decoration: none;
+    ul li::before {
+      content: "⭐";
+      margin-right: 10px;
+    }
+
+    .highlight {
+      background: var(--primary);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
       font-weight: bold;
-      transition: color 0.3s ease;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .card a:hover {
-      color: #8baa24;
+    button:hover {
+      background: #7b1fa2;
+    }
+
+    .kitty {
+      font-size: 40px;
+      text-align: center;
+      margin-top: 20px;
+      animation: kittyBlink 2s infinite;
+    }
+
+    @keyframes kittyBlink {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .contact-info p {
+      margin: 6px 0;
+    }
+
+    a {
+      color: #1976d2;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+
+    .footer {
+      text-align: center;
+      font-style: italic;
+      margin-top: 40px;
+      color: #777;
+    }
+
+    .floating-btns {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 99;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .floating-btns a {
+      background: var(--primary);
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 30px;
+      transition: 0.3s;
+    }
+
+    .floating-btns a:hover {
+      background: #7b1fa2;
     }
 
     .social-icons {
       margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      font-size: 2rem;
+      text-align: center;
     }
 
     .social-icons a {
-      color: #333;
-      transition: color 0.3s ease;
+      margin: 0 10px;
+      font-size: 24px;
+      color: #1976d2;
     }
 
-    .social-icons a:hover {
-      color: #8baa24;
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .kitty {
+        font-size: 30px;
+      }
+
+      .floating-btns a {
+        font-size: 26px;
+        padding: 12px;
+      }
     }
 
-    /* Aнімації */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
       }
-      to {
-        opacity: 1;
-      }
-    }
 
-    @keyframes fadeInText {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
+      .container {
+        padding: 15px;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
-    @keyframes slideUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
+      h1 {
+        font-size: 24px;
       }
-      to {
-        transform: translateY(0);
-        opacity: 1;
+
+      h2 {
+        font-size: 20px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .kitty {
+        font-size: 28px;
+      }
+
+      .floating-btns {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .floating-btns a {
+        font-size: 24px;
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
+  <div class="kitty">😺</div>
 
-  <div class="content">
+  <div class="lang-switcher">
+    <button onclick="switchLang('uk')">🇺🇦 Українська</button>
+    <button onclick="switchLang('en')">🇬🇧 English</button>
+    <button onclick="toggleTheme()">🌓 Тема</button>
+  </div>
+
+  <div class="container" id="content-uk">
     <h1>Іван Бойко</h1>
-    <p>Я — душа компанії, студент-комп'ютерник і просто кайфовий хлопець 😎. Люблю кодити, спілкуватись і створювати щось круте.</p>
 
-    <div class="card">
-      <h2>Контакти</h2>
-      <p>Email: <a href="mailto:bivan2544@gmail.com">bivan2544@gmail.com</a></p>
-      <p>Телефон: +380 68 791 0545</p>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/boy4ik23/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://t.me/ivannboiko" target="_blank"><i class="fab fa-telegram"></i></a>
-      </div>
+    <div class="contact-info">
+      <p><span class="highlight">Професія:</span> Студент комп'ютерних наук</p>
+      <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
+      <p><span class="highlight">Телефон:</span> +380 68 791 0545</p>
+    </div>
+
+    <h2>Про мене</h2>
+    <p>Я – мотивований студент першого курсу, навчаюсь на факультеті комп'ютерних наук у КНУБА. Цікавлюсь програмуванням, управлінням проєктами та сучасними технологіями. Завжди прагну до вдосконалення та нових знань.</p>
+
+    <h2>Освіта</h2>
+    <ul>
+      <li>КНУБА (2024–2028)</li>
+      <li>Школа (2013–2024)</li>
+    </ul>
+
+    <h2>Навички</h2>
+    <ul>
+      <li><strong>Мови:</strong> C++, HTML, CSS</li>
+      <li><strong>Інструменти:</strong> Git, MS Office</li>
+      <li><strong>Англійська:</strong> вище середнього</li>
+    </ul>
+
+    <h2>Досвід</h2>
+    <ul>
+      <li>Участь у командних проєктах</li>
+      <li>Онлайн-курси (Coursera, Udemy)</li>
+    </ul>
+
+    <h2>Інтереси</h2>
+    <ul>
+      <li>Песики 🐶</li>
+      <li>Спорт</li>
+      <li>Рукопашний бій 🥋 <a href="https://www.facebook.com/HandToHandCombatFederation/" target="_blank">Федерація</a></li>
+    </ul>
+
+    <div class="footer">
+      <p>&copy; 2025 Іван Бойко</p>
     </div>
   </div>
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <!-- Three.js -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+  <div class="container" id="content-en" style="display:none;">
+    <h1>Ivan Boiko</h1>
+
+    <div class="contact-info">
+      <p><span class="highlight">Profession:</span> Computer Science student</p>
+      <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
+      <p><span class="highlight">Phone:</span> +380 68 791 0545</p>
+    </div>
+
+    <h2>About Me</h2>
+    <p>I’m a motivated first-year CS student at KNUCA. Interested in coding, project management, and modern technology. I always strive to improve and learn something new.</p>
+
+    <h2>Education</h2>
+    <ul>
+      <li>KNUCA (2024–2028)</li>
+      <li>School (2013–2024)</li>
+    </ul>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> C++, HTML, CSS</li>
+      <li><strong>Tools:</strong> Git, MS Office</li>
+      <li><strong>English:</strong> Intermediate</li>
+    </ul>
+
+    <h2>Experience</h2>
+    <ul>
+      <li>Team projects at university</li>
+      <li>Online learning (Coursera, Udemy)</li>
+    </ul>
+
+    <div class="footer">
+      <p>&copy; 2025 Ivan Boiko</p>
+    </div>
+  </div>
+
+  <div class="floating-btns">
+    <a href="https://www.instagram.com/boy4ik23/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/ivannboiko" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+  </div>
 
   <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg"), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({ color: "#8baa24" });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    const light = new THREE.PointLight(0xffffff, 1);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-
-    const starGeometry = new THREE.BufferGeometry();
-    const starCount = 1000;
-    const positions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 100;
-    }
-    starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
-    const stars = new THREE.Points(starGeometry, starMaterial);
-    scene.add(stars);
-
-    camera.position.z = 4;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
+    function switchLang(lang) {
+      const uk = document.getElementById('content-uk');
+      const en = document.getElementById('content-en');
+      if (lang === 'uk') {
+        uk.style.display = 'block';
+        en.style.display = 'none';
+      } else {
+        uk.style.display = 'none';
+        en.style.display = 'block';
+      }
     }
 
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth/window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
   </script>
 </body>
 </html>
