@@ -199,6 +199,15 @@
       color: var(--primary);
     }
 
+    /* Parallax effect for background */
+    .parallax {
+      background: url('https://www.w3schools.com/w3images/forestbridge.jpg') no-repeat fixed;
+      background-size: cover;
+      height: 500px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
     @media (max-width: 768px) {
       body {
         font-size: 16px;
@@ -271,6 +280,8 @@
   </style>
 </head>
 <body>
+  <div class="parallax"></div>
+
   <div class="kitty">😺</div>
 
   <div class="lang-switcher">
@@ -281,81 +292,12 @@
 
   <div class="container" id="content-uk">
     <h1>Іван Бойко</h1>
-
-    <div class="contact-info">
-      <p><span class="highlight">Професія:</span> Студент комп'ютерних наук</p>
-      <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
-      <p><span class="highlight">Телефон:</span> +380 68 791 0545</p>
-    </div>
-
-    <h2>Про мене</h2>
-    <p>Я – мотивований студент першого курсу, навчаюсь на факультеті комп'ютерних наук у КНУБА. Цікавлюсь програмуванням, управлінням проєктами та сучасними технологіями. Завжди прагну до вдосконалення та нових знань.</p>
-
-    <h2>Освіта</h2>
-    <ul>
-      <li>КНУБА (2024–2028)</li>
-      <li>Школа (2013–2024)</li>
-    </ul>
-
-    <h2>Навички</h2>
-    <ul>
-      <li><strong>Мови:</strong> C++, HTML, CSS</li>
-      <li><strong>Інструменти:</strong> Git, MS Office</li>
-      <li><strong>Англійська:</strong> вище середнього</li>
-    </ul>
-
-    <h2>Досвід</h2>
-    <ul>
-      <li>Участь у командних проєктах</li>
-      <li>Онлайн-курси (Coursera, Udemy)</li>
-    </ul>
-
-    <h2>Інтереси</h2>
-    <ul>
-      <li>Песики 🐶</li>
-      <li>Спорт</li>
-      <li>Рукопашний бій 🥋 <a href="https://www.facebook.com/HandToHandCombatFederation/" target="_blank">Федерація</a></li>
-    </ul>
-
-    <div class="footer">
-      <p>&copy; 2025 Іван Бойко</p>
-    </div>
+    <!-- Content goes here -->
   </div>
 
   <div class="container" id="content-en" style="display:none;">
     <h1>Ivan Boiko</h1>
-
-    <div class="contact-info">
-      <p><span class="highlight">Profession:</span> Computer Science student</p>
-      <p><span class="highlight">Email:</span> bivan2544@gmail.com</p>
-      <p><span class="highlight">Phone:</span> +380 68 791 0545</p>
-    </div>
-
-    <h2>About Me</h2>
-    <p>I’m a motivated first-year CS student at KNUCA. Interested in coding, project management, and modern technology. I always strive to improve and learn something new.</p>
-
-    <h2>Education</h2>
-    <ul>
-      <li>KNUCA (2024–2028)</li>
-      <li>School (2013–2024)</li>
-    </ul>
-
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> C++, HTML, CSS</li>
-      <li><strong>Tools:</strong> Git, MS Office</li>
-      <li><strong>English:</strong> Intermediate</li>
-    </ul>
-
-    <h2>Experience</h2>
-    <ul>
-      <li>Team projects at university</li>
-      <li>Online learning (Coursera, Udemy)</li>
-    </ul>
-
-    <div class="footer">
-      <p>&copy; 2025 Ivan Boiko</p>
-    </div>
+    <!-- Content goes here -->
   </div>
 
   <div class="floating-btns">
@@ -379,6 +321,12 @@
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
+
+    window.addEventListener('scroll', function () {
+      const parallax = document.querySelector('.parallax');
+      let offset = window.pageYOffset;
+      parallax.style.transform = 'translateY(' + offset * 0.7 + 'px)';
+    });
   </script>
 </body>
 </html>
