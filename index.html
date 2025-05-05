@@ -153,7 +153,7 @@
       z-index: 99;
     }
 
-    .floating-btns a {
+    .floating-btns button {
       background: var(--primary);
       color: white;
       padding: 15px;
@@ -163,7 +163,7 @@
       transition: background-color 0.3s ease;
     }
 
-    .floating-btns a:hover {
+    .floating-btns button:hover {
       background: var(--hover-primary);
     }
 
@@ -242,13 +242,10 @@
     </ul>
 
     <h2>Посилання</h2>
-    <ul>
-      <li><a href="https://github.com/ivannboiko/portfolioi" target="_blank">💻 Мій GitHub репозиторій</a></li>
-      <li><a href="https://porokhovnichenkoiryna.github.io/learning_git/public/" target="_blank">🔙 Назад до сайту</a></li>
-    </ul>
-
-    <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'">Повернутися до репозиторію</button>
-    <button onclick="window.location.href='https://porokhovnichenkoiryna.github.io/learning_git/public/'">Повернутися до сайту</button>
+    <div class="floating-btns">
+      <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'" target="_blank">💻 Мій GitHub репозиторій</button>
+      <button onclick="window.location.href='https://porokhovnichenkoiryna.github.io/learning_git/public/'" target="_blank">🔙 Назад до сайту</button>
+    </div>
 
     <div class="footer">
       <p>&copy; 2025 Іван Бойко</p>
@@ -288,13 +285,10 @@
     </ul>
 
     <h2>Links</h2>
-    <ul>
-      <li><a href="https://github.com/ivannboiko/portfolioi" target="_blank">💻 My GitHub repository</a></li>
-      <li><a href="https://porokhovnichenkoiryna.github.io/learning_git/public/" target="_blank">🔙 Back to site</a></li>
-    </ul>
-
-    <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'">Back to repository</button>
-    <button onclick="window.location.href='https://porokhovnichenkoiryna.github.io/learning_git/public/'">Back to site</button>
+    <div class="floating-btns">
+      <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'" target="_blank">💻 My GitHub repository</button>
+      <button onclick="window.location.href='https://porokhovnichenkoiryna.github.io/learning_git/public/'" target="_blank">🔙 Back to site</button>
+    </div>
 
     <div class="footer">
       <p>&copy; 2025 Ivan Boiko</p>
