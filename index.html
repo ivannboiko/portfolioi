@@ -144,37 +144,50 @@
       background: var(--hover-primary);
     }
 
+    /* Floating Buttons Styles */
     .floating-btns {
       position: fixed;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 10px;
+      left: 10px;
       display: flex;
       gap: 10px;
-      z-index: 99;
+      z-index: 999;
       flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    body.dark .floating-btns {
+      background: rgba(20, 20, 20, 0.8);
     }
 
     .floating-btns button {
       background: var(--primary);
       color: white;
-      padding: 8px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
-      font-size: 14px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
-    }
-
-    .floating-btns button:hover {
-      background: var(--hover-primary);
+      font-size: 13px;
+      white-space: nowrap;
     }
 
     @media (max-width: 600px) {
-      html { font-size: 16px; }
-      h1 { font-size: 30px; }
-      h2 { font-size: 22px; }
-      .floating-btns { flex-direction: column; }
+      .floating-btns {
+        flex-direction: column;
+        bottom: 15px;
+        left: 10px;
+        right: auto;
+        width: auto;
+        padding: 4px;
+      }
+
+      .floating-btns button {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
     }
+
   </style>
 </head>
 <body>
