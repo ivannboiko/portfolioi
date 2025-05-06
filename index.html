@@ -1,124 +1,45 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Портфоліо - Іван Бойко</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    :root {
-      --bg-light: linear-gradient(135deg, #e3f2fd, #fceabb);
-      --bg-dark: #121212;
-      --text-light: #222;
-      --text-dark: #eee;
-      --primary: #8baa24;
-      --hover-primary: #7b1fa2;
-      --btn-radius: 8px;
-      --container-radius: 16px;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
+    body {
       font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      background: var(--bg-light);
-      color: var(--text-light);
-      scroll-behavior: smooth;
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #e3f2fd, #fceabb);
+      color: #222;
+      transition: background 0.3s ease;
     }
-
     body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
+      background: #121212;
+      color: #eee;
     }
-
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: var(--container-radius);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    body.dark .container {
-      background: rgba(30, 30, 30, 0.95);
-    }
-
-    h1 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
-    h2 {
-      font-size: 26px;
-      margin-top: 30px;
-      border-bottom: 2px dashed var(--primary);
-      padding-bottom: 6px;
-    }
-
-    p, li {
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    ul {
-      padding-left: 20px;
-      list-style-type: disc;
-    }
-
     .highlight {
-      background: var(--primary);
+      background: #8baa24;
       color: #fff;
       padding: 3px 8px;
       border-radius: 5px;
     }
-
-    .lang-switcher {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .lang-switcher button {
-      background: var(--primary);
+    .lang-switcher button, .floating-btns button {
+      background: #8baa24;
       border: none;
       color: white;
       padding: 8px 15px;
-      border-radius: var(--btn-radius);
+      border-radius: 8px;
       font-weight: bold;
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
-    .lang-switcher button:hover {
-      background: var(--hover-primary);
+    .lang-switcher button:hover, .floating-btns button:hover {
+      background: #7b1fa2;
     }
-
-    .contact-info p {
-      margin: 8px 0;
-    }
-
-    .contact-info a {
-      color: var(--primary);
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .footer {
-      text-align: center;
-      font-style: italic;
-      margin-top: 40px;
-      color: #777;
-    }
-
     .social-icons {
       position: fixed;
       top: 50%;
@@ -128,21 +49,17 @@
       flex-direction: column;
       gap: 15px;
     }
-
     .social-icons a {
-      background: var(--primary);
+      background: #8baa24;
       color: white;
       padding: 12px;
       border-radius: 50%;
       font-size: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
     }
-
     .social-icons a:hover {
-      background: var(--hover-primary);
+      background: #7b1fa2;
     }
-
     .floating-btns {
       position: fixed;
       bottom: 20px;
@@ -153,43 +70,7 @@
       gap: 15px;
       z-index: 99;
     }
-
-    .floating-btns button {
-      background: var(--primary);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease;
-    }
-
-    .floating-btns button:hover {
-      background: var(--hover-primary);
-    }
-
     @media (max-width: 600px) {
-      html {
-        font-size: 16px;
-      }
-
-      h1 {
-        font-size: 30px;
-      }
-
-      h2 {
-        font-size: 22px;
-      }
-
-      .lang-switcher button {
-        font-size: 14px;
-        padding: 8px 14px;
-      }
-
-      .container {
-        padding: 20px;
-      }
-
       .floating-btns {
         flex-direction: column;
         align-items: center;
@@ -199,96 +80,58 @@
   </style>
 </head>
 <body>
-  <div class="floating-btns">
-    <button onclick="window.location.href='https://porokhovnichenkoiryna.github.io/learning_git/public/'" target="_blank">🔙 Назад до сайту</button>
-    <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'" target="_blank">💻 Мій GitHub репозиторій</button>
-  </div>
-
-  <div class="container" id="content-uk">
-    <h1>Іван Бойко</h1>
-
-    <div class="contact-info">
-      <p><span class="highlight">Професія:</span> Студент комп'ютерних наук</p>
-      <p><span class="highlight">Email:</span> <a href="mailto:bivan2544@gmail.com">bivan2544@gmail.com</a></p>
-      <p><span class="highlight">Телефон:</span> <a href="tel:+380687910545">+380 68 791 0545</a></p>
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Іван Бойко</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Головна</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Про мене</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Навички</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Проєкти</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacts">Контакти</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
+  <!-- Весь існуючий контент -->
+  <div id="about" class="container py-5">
     <h2>Про мене</h2>
     <p>Я – мотивований студент першого курсу, навчаюсь на факультеті комп'ютерних наук у КНУБА. Цікавлюсь програмуванням, управлінням проєктами та сучасними технологіями. Завжди прагну до вдосконалення та нових знань.</p>
+  </div>
 
-    <h2>Освіта</h2>
-    <ul>
-      <li>КНУБА (2024–2028)</li>
-      <li>Школа (2013–2024)</li>
-    </ul>
-
+  <div id="skills" class="container py-5">
     <h2>Навички</h2>
     <ul>
       <li><strong>Мови:</strong> C++, HTML, CSS</li>
       <li><strong>Інструменти:</strong> Git, MS Office</li>
       <li><strong>Англійська:</strong> вище середнього</li>
     </ul>
-
-    <h2>Досвід</h2>
-    <ul>
-      <li>Участь у командних проєктах</li>
-      <li>Онлайн-курси (Coursera, Udemy)</li>
-    </ul>
-
-    <h2>Інтереси</h2>
-    <ul>
-      <li>Песики 🐶</li>
-      <li>Спорт</li>
-      <li>Рукопашний бій 🥋 <a href="https://www.facebook.com/HandToHandCombatFederation/" target="_blank">Федерація</a></li>
-    </ul>
-
-    <h2>Посилання</h2>
-    <div class="footer">
-      <p>&copy; 2025 Іван Бойко</p>
-    </div>
   </div>
 
-  <div class="container" id="content-en" style="display:none;">
-    <h1>Ivan Boiko</h1>
+  <div id="projects" class="container py-5">
+    <h2>Проєкти</h2>
+    <p>Список проєктів і посилання на GitHub.</p>
+  </div>
 
-    <div class="contact-info">
-      <p><span class="highlight">Profession:</span> Computer Science student</p>
-      <p><span class="highlight">Email:</span> <a href="mailto:bivan2544@gmail.com">bivan2544@gmail.com</a></p>
-      <p><span class="highlight">Phone:</span> <a href="tel:+380687910545">+380 68 791 0545</a></p>
-    </div>
-
-    <h2>About Me</h2>
-    <p>I’m a motivated first-year CS student at KNUCA. Interested in coding, project management, and modern technology. I always strive to improve and learn something new.</p>
-
-    <h2>Education</h2>
-    <ul>
-      <li>KNUCA (2024–2028)</li>
-      <li>School (2013–2024)</li>
-    </ul>
-
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> C++, HTML, CSS</li>
-      <li><strong>Tools:</strong> Git, MS Office</li>
-      <li><strong>English:</strong> Intermediate</li>
-    </ul>
-
-    <h2>Experience</h2>
-    <ul>
-      <li>Team projects at university</li>
-      <li>Online learning (Coursera, Udemy)</li>
-      <li>Cats 😸</li>
-    </ul>
-
-    <h2>Links</h2>
-    <div class="footer">
-      <p>&copy; 2025 Ivan Boiko</p>
-    </div>
+  <div id="contacts" class="container py-5">
+    <h2>Контакти</h2>
+    <p><span class="highlight">Email:</span> <a href="mailto:bivan2544@gmail.com">bivan2544@gmail.com</a></p>
+    <p><span class="highlight">Телефон:</span> <a href="tel:+380687910545">+380 68 791 0545</a></p>
   </div>
 
   <div class="social-icons">
     <a href="https://www.instagram.com/boy4ik23/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://t.me/ivannboiko" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+  </div>
+
+  <div class="floating-btns">
+    <button onclick="window.location.href='https://github.com/ivannboiko/portfolioi'" target="_blank">💻 Мій GitHub репозиторій</button>
   </div>
 
   <script>
@@ -303,7 +146,6 @@
         en.style.display = 'block';
       }
     }
-
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
