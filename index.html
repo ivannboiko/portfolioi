@@ -28,6 +28,7 @@
       color: var(--text-light);
       scroll-behavior: smooth;
       transition: all 0.3s ease;
+      padding-bottom: 100px;  /* Збільшуємо відступ для контенту */
     }
 
     body.dark {
@@ -144,17 +145,16 @@
       background: var(--hover-primary);
     }
 
-    /* Floating Buttons Styles */
     .floating-btns {
       position: fixed;
-      bottom: 10px;
-      left: 10px;
+      bottom: 20px;
+      right: 20px;
       display: flex;
-      gap: 10px;
+      gap: 15px;
       z-index: 999;
       flex-wrap: wrap;
       background: rgba(255, 255, 255, 0.8);
-      padding: 6px;
+      padding: 10px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
@@ -166,28 +166,25 @@
     .floating-btns button {
       background: var(--primary);
       color: white;
-      padding: 6px 12px;
+      padding: 8px 15px;
       border-radius: 6px;
-      font-size: 13px;
+      font-size: 14px;
       white-space: nowrap;
     }
 
     @media (max-width: 600px) {
       .floating-btns {
         flex-direction: column;
-        bottom: 15px;
-        left: 10px;
-        right: auto;
-        width: auto;
-        padding: 4px;
+        bottom: 20px;
+        right: 10px;
+        padding: 6px;
       }
 
       .floating-btns button {
         font-size: 12px;
-        padding: 5px 10px;
+        padding: 6px 12px;
       }
     }
-
   </style>
 </head>
 <body>
